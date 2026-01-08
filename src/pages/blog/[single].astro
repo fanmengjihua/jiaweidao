@@ -7,8 +7,8 @@ export async function getStaticPaths(): Promise<Array<{ params: { single: string
   let paths: Array<{ params: { single: string } }> = [];
   
   // 在构建时，Astro.locals 是 undefined，所以我们需要检查它
-  if ((Astro.locals as any)?.runtime?.env?.DB) {
-    const { DB } = (Astro.locals as any).runtime.env as { DB: any };
+  if ((Astro.locals as any)?.runtime?.env?.['jiaweidao-db']) {
+    const DB = (Astro.locals as any).runtime.env['jiaweidao-db'];
     const result = await DB.prepare(`
       SELECT slug
       FROM articles

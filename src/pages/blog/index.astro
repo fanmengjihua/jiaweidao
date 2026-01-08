@@ -5,9 +5,9 @@ import Base from "@/layouts/Base.astro";
 let posts = [];
 
 // 只在有运行时环境时查询数据库
-if ((Astro.locals as any)?.runtime?.env?.DB) {
+if ((Astro.locals as any)?.runtime?.env?.['jiaweidao-db']) {
   // Cloudflare Pages SSR env
-  const { DB } = (Astro.locals as any).runtime.env;
+  const DB = (Astro.locals as any).runtime.env['jiaweidao-db'];
 
   // 查询文章
   const result = await DB.prepare(`
